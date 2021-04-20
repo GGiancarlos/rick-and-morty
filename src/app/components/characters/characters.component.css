@@ -1,0 +1,10 @@
+.logo {
+    margin: 0 auto;
+    display: block;
+}
+
+.container .row {
+    display: flex;
+    justify-content: space-between;
+}
+  
