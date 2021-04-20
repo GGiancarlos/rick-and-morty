@@ -1,9 +1,15 @@
-<img class="logo" width="280" src="../../../assets/images/ricknmorty.png" alt="logo">
+<nav class="navbar navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" routerLink="/"><img class="logo" width="50" src="../../../assets/images/home.png"
+      alt="logo"></a>
+</nav>
+<div class="mt-5">
+  <img class="logo" width="280" src="../../../assets/images/ricknmorty.png" alt="logo">
+</div>
 
 <div class="container mt-4">
   <div class="row">
-    <div *ngFor="let character of characters" class="card mb-2 col-xs-12 col-sm-4 col-md-3">
-      <img [style.filter]="getColorImage(character)" [src]="getImage(character)" class="card-img-top" alt="...">
+    <div *ngFor="let character of characters" class="card border-info text-white bg-dark mb-2 col-xs-12 col-sm-4 col-md-3">
+      <img [style.filter]="getColorImage(character)" [src]="getImage(character)" class="card-img-top" [alt]="character.name">
       <div class="card-body">
         <h5 class="card-title">{{ character.name }}</h5>
         <p>Gender: {{character.gender}}
@@ -27,7 +33,46 @@
             </svg></span>
         </p>
         <p>Status: {{character.status}}</p>
-        <a (click)="openModal()" class="btn btn-block btn-light">LOAD MORE</a>
+        <a (click)="openModal(character)" class="btn btn-block btn-light">See Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="open-modal animation fadeIn" *ngIf="displayModal" (click)="displayModal=false">
+  <div class="modal" tabindex="-1" style="display:block;">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{selectedCharacter.name}}</h5>
+          <button (click)="displayModal=false" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <ul *ngIf="selectedCharacter" class="list-group text-dark mb-3">
+                  <li class="list-group-item">Status: {{ selectedCharacter.status }}</li>
+                  <li class="list-group-item">Species: {{ selectedCharacter.species }}</li>
+                  <li class="list-group-item">Gender: {{ selectedCharacter.gender }}</li>
+                  <li class="list-group-item">Origin: {{ selectedCharacter.origin.name }}</li>
+                  <li class="list-group-item">Location: {{ selectedCharacter.location.name }}</li>
+                </ul>
+              </div>
+              <div class="col-sm">
+                <img *ngIf="selectedCharacter?.image" class="img-thumbnail rounded"
+                  [style.filter]="getColorImage(selectedCharacter)" [src]="getImage(selectedCharacter)" [alt]="selectedCharacter.name">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="displayModal=false" type="button" class="btn btn-secondary"
+            data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>

@@ -10,6 +10,7 @@ export class CharactersComponent implements OnInit {
 
   characters: any = [];
   info: any = {};
+  selectedCharacter: any;
   displayModal: boolean = false;
   
 
@@ -27,9 +28,9 @@ export class CharactersComponent implements OnInit {
     });
   }
 
-  openModal() {
+  openModal(character: any) {
     this.displayModal = true;
-
+    this.selectedCharacter = {...character};
   }
 
   getColorImage(character: any) {
