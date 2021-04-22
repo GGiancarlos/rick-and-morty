@@ -1,15 +1,13 @@
-<nav class="navbar navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" routerLink="/"><img class="logo" width="50" src="../../../assets/images/home.png"
-      alt="logo"></a>
-</nav>
 <div class="mt-5">
   <img class="logo" width="280" src="../../../assets/images/ricknmorty.png" alt="logo">
 </div>
 
 <div class="container mt-4">
-  <div class="row">
-    <div *ngFor="let character of characters" class="card border-info text-white bg-dark mb-2 col-xs-12 col-sm-4 col-md-3">
-      <img [style.filter]="getColorImage(character)" [src]="getImage(character)" class="card-img-top" [alt]="character.name">
+  <div class="row justify-content-center mt-3">
+    <div class="card text-center mb-2 col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters">
+      <img class="card-img-top" [style.filter]="getColorImage(character)" [src]="getImage(character)"
+        [alt]="character.name">
+
       <div class="card-body">
         <h5 class="card-title">{{ character.name }}</h5>
         <p>Gender: {{character.gender}}
@@ -33,7 +31,7 @@
             </svg></span>
         </p>
         <p>Status: {{character.status}}</p>
-        <a (click)="openModal(character)" class="btn btn-block btn-light">See Details</a>
+        <a (click)="openModal(character)" class="btn btn-block btn-secondary">See Details</a>
       </div>
     </div>
   </div>
@@ -58,13 +56,14 @@
                   <li class="list-group-item">Status: {{ selectedCharacter.status }}</li>
                   <li class="list-group-item">Species: {{ selectedCharacter.species }}</li>
                   <li class="list-group-item">Gender: {{ selectedCharacter.gender }}</li>
-                  <li class="list-group-item">Origin: {{ selectedCharacter.origin.name }}</li>
-                  <li class="list-group-item">Location: {{ selectedCharacter.location.name }}</li>
+                  <li class="list-group-item">Origin: {{  selectedCharacter.origin ? selectedCharacter.origin.name : "-" }}</li>
+                  <li class="list-group-item">Location: {{  selectedCharacter.location ? selectedCharacter.location.name : "-" }}</li>
                 </ul>
               </div>
               <div class="col-sm">
                 <img *ngIf="selectedCharacter?.image" class="img-thumbnail rounded"
-                  [style.filter]="getColorImage(selectedCharacter)" [src]="getImage(selectedCharacter)" [alt]="selectedCharacter.name">
+                  [style.filter]="getColorImage(selectedCharacter)" [src]="getImage(selectedCharacter)"
+                  [alt]="selectedCharacter.name">
               </div>
             </div>
           </div>

@@ -1,11 +1,5 @@
-.logo {
-    margin: 0 auto;
-    display: block;
-}
-
 .container .row {
     display: flex;
-    justify-content: space-between;
 }
   
 .open-modal {
@@ -20,9 +14,9 @@
   
 .animation{
     animation-duration: 2s;
-    animation-fill-mode: both; /* en ambos */
+    animation-fill-mode: both; 
     -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both; /* en ambos */
+    -webkit-animation-fill-mode: both;
 }
   
 .fadeIn{

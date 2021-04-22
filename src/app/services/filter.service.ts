@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
+import { CharacterModel } from './../models/character.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharactersService {
-
-  // private baseURL: string = "https://rickandmortyapi.com/api/character";
-  // private baseURL: string = "http://localhost:8080/api/characters";
-  private baseURL: string = "/api/characters";
+export class FilterService {
+  private baseURL: string = "https://rickandmortyapi.com/api/character";
+  private baseURL2: string = "/api/characters";
 
   constructor(private http: HttpClient) { }
 
@@ -20,22 +19,19 @@ export class CharactersService {
     })
   }
 
-  // getCharacters(page?: number): Observable<any> {
-  //   if (!page){
-  //     page = 1;
-  //   }
-  //   let url = this.baseURL + '?page='+page
-  //   return this.http.get(url, this.httpOptions).
-  //     pipe(catchError(this.handleError));
-  // }
+  filterCharacters(ids: string): Observable<any> {
+    let url = this.baseURL + '/' + ids;
+    return this.http.get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
 
-  getCharacters(page?: number): Observable<any> {
-    if (!page){
-      page = 1;
-    }
-    let url = this.baseURL
-    return this.http.get(url, this.httpOptions).
-      pipe(catchError(this.handleError));
+  saveCharacter(character: any): Observable<any> {
+    let url = this.baseURL2;
+
+    return this.http.post<any>(url, JSON.stringify(character), this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   // Error handling 

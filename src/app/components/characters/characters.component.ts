@@ -20,11 +20,17 @@ export class CharactersComponent implements OnInit {
     this.getCharacters();
   }
 
-  getCharacters() {
-    this.characterService.getCharacters(1).subscribe(data => {
-      this.characters = data.results;
-      this.info = data.info;
+  // getCharacters() {
+  //   this.characterService.getCharacters().subscribe(data => {
+  //     this.characters = data.results;
+  //     this.info = data.info;
 
+  //   });
+  // }
+  getCharacters() {
+    this.characterService.getCharacters().subscribe(data => {
+      this.characters = data;
+      // this.info = data.info;
     });
   }
 

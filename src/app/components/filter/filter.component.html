@@ -1,0 +1,45 @@
+<div class="mt-5" style="background-color: black;">
+  <img class="logo" width="300" src="../../../assets/images/home.png" alt="logo">
+</div>
+
+<form [formGroup]="form">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-md-1">
+        <div *ngIf="loading" class="spinner-grow" role="status"></div>
+      </div>
+      <div class="col-12 col-md-7 form-group">
+        <input formControlName="number" #box class="form-control md-mb-2" type="text"
+          placeholder="Search by character's ID. For example: 1,2,3" >
+
+        <div *ngIf="f.number.touched && f.number.invalid" class="alert alert-danger">
+          <div *ngIf="f.number.errors?.required">A number is required at least.</div>
+          <div *ngIf="f.number.errors?.pattern">Enter only numbers from 1 to 671 separated by ','.</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <button type="submit" class="btn btn-primary mr-2" (click)="searchCharacters(box.value)"
+          [disabled]="!form.valid">Search</button>
+        <button type="submit" class="btn btn-success" [disabled]="btnSaveDisabled" (click)="saveCharacters()">Save
+          Characters</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<div class="container mt-4">
+  <div class="row justify-content-center mt-3">
+    <div class="card text-center mb-2 col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters">
+      <img class="card-img-top" [src]="character.image" [alt]="character.name">
+
+      <div class="card-body">
+        <h5 class="card-title">{{ character.name }}</h5>
+        <p>ID: {{character.id}}</p>
+        <p>Gender: {{character.gender}}</p>
+        <p>Status: {{character.status}}</p>
+        <p>Species: {{character.species}}</p>
+      </div>
+    </div>
+  </div>
+</div>
