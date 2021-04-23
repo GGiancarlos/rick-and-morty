@@ -9,7 +9,7 @@
 
 # dependencies
 /node_modules
-rick-and-morty-back/node_modules
+rick-and-morty-back/node_modules/*
 
 # profiling files
 chrome-profiler-events*.json
