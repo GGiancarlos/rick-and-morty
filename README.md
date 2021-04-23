@@ -1,4 +1,24 @@
-# RickAndMorty
+# Rick And Morty Application
+Project implemented using Angular 11, Node.js, Express and MongoDB.
+This project use the [Rick and Morty API](https://rickandmortyapi.com/) for filter characters by their ID and storing them in a database.
+
+
+# RUNNING THE BACKEND
+
+
+
+# RUNNING THE FRONTEND 
+Once downloaded the project you need to install all the dependencies running `npm install`.
+
+Run `npm start` for a dev server and navigate to `http://localhost:4200/` to see the app running.
+
+NOTE: We use `npm start` instead of `ng serve` in order to solve a CORS problem.
+
+## Running the frontend using Docker
+If you want to run the app usin Docker it is possible, because the frontend was configured to create a container in Docker through the command `docker build -t rick-morty` (rick-morty is the name of the container)
+
+
+# Angular Documentation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
