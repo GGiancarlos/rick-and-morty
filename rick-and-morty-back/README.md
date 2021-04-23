@@ -11,7 +11,7 @@ Run `node server.js` for run the server on port 8080.
 Run `docker build -t rick-morty-back .`
 Run `docker run -d -it -p 8080:8080`
 
-# API's
+# API
 Mainly 2 endpoints were generated
 - Create Characters - POST -> `http://localhost:8080/api/characters`
 - List All Characters - GET -> `http://localhost:8080/api/characters`
